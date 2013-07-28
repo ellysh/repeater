@@ -1,3 +1,5 @@
+global kTitle := "Untitled - Notepad"
+global kClass := "ahk_class Notepad"
 global kUseClass := 0
 
 #Persistent
@@ -9,11 +11,11 @@ GetWindow()
 {
 	if %kUseClass%
 	{
-		return "ahk_class Notepad"
+		return %kClass%
 	}
 	else
 	{
-		return "Untitled - Notepad"
+		return %kTitle%
 	}
 }
 
