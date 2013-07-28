@@ -1,24 +1,24 @@
-#include debug.ahk
+#Persistent
+#SingleInstance, Force
 
-!F1:: 
-	ExitApp
-	return
+SetTimer, WatchKeyboard, 10
 
-F1:: 
-F2:: 
-F3:: 
-F4::
-F5::
-F6::
-F7::
-F8::
-F9::
-F10::
-F11::
-F12:: MsgBox, Test
+WatchKeyboard:
+	loop
+	{
+		IfWinActive, ahk_class Notepad
+		{
+			Input, SingleKey, L1 *
+			SendToAll(SingleKey)
+		}
+	}
+return
 
-; Main Loop
-while true
+SendToAll(x)
 {
-	Sleep 10
+	WinGet, notepadWindows, List, ahk_class Notepad
+	Loop %notepadWindows%
+	{
+		ControlSend, , %x%, % "ahk_id " . notepadWindows%A_Index%
+	}
 }
