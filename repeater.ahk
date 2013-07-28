@@ -1,4 +1,7 @@
-global kTitle := "Untitled - Notepad"
+#include debug.ahk
+
+global kTitle := "II"
+;global kTitle := "Untitled - Notepad"
 global kClass := "ahk_class Notepad"
 global kUseClass := 0
 
@@ -25,6 +28,7 @@ WatchKeyboard:
 		IfWinActive, % GetWindow()
 		{
 			Input, SingleKey, L1 *
+			LogWrite("WatchKeyboard -  key = " . SingleKey)
 			SendToAll(SingleKey)
 		}
 	}
@@ -35,6 +39,7 @@ SendToAll(x)
 	WinGet, notepadWindows, List, % GetWindow()
 	Loop %notepadWindows%
 	{
+		LogWrite("SendToAll -  key = " . x . " window = " . "ahk_id " . notepadWindows%A_Index%)	
 		ControlSend, , %x%, % "ahk_id " . notepadWindows%A_Index%
 	}
 }
