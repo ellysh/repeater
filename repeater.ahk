@@ -6,7 +6,7 @@ SetTimer, WatchKeyboard, 10
 WatchKeyboard:
 	loop
 	{
-		IfWinActive, ahk_class Notepad
+		IfWinActive, Untitled - Notepad
 		{
 			Input, SingleKey, L1 *
 			SendToAll(SingleKey)
@@ -16,7 +16,7 @@ return
 
 SendToAll(x)
 {
-	WinGet, notepadWindows, List, ahk_class Notepad
+	WinGet, notepadWindows, List, Untitled - Notepad
 	Loop %notepadWindows%
 	{
 		ControlSend, , %x%, % "ahk_id " . notepadWindows%A_Index%
