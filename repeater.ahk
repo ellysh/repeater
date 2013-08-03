@@ -1,8 +1,10 @@
 #include debug.ahk
 
-;global kTitle := "II"
-global kTitle := "Untitled - Notepad"
+global kTitle := "II"
+;global kTitle := "Untitled - Notepad"
+
 global kClass := "ahk_class Notepad"
+;global kClass := "ahk_class l2UnrealWWindowsViewportWindow"
 global kUseClass := 0
 
 #NoEnv
@@ -10,6 +12,7 @@ global kUseClass := 0
 #SingleInstance, Force
 
 SetKeyDelay, -1
+LogWrite("Configuration - kTitle = " . kTitle . " Class = " . kClass . " kUseClass = " . kUseClass)
 
 GetWindow()
 {
@@ -23,7 +26,7 @@ GetWindow()
 	}
 }
 
-LoopSend(Focus=0)
+LoopSend(Focus = 0)
 {
 	WinGet, WinList, List, % GetWindow()
 	Loop %WinList%
@@ -32,7 +35,7 @@ LoopSend(Focus=0)
 		{
 			WinActivate, % "ahk_id " . WinList%A_Index%
 		}
-		LogWrite("ControlSend -  key = " . x . " window = " . "ahk_id " . notepadWindows%A_Index%)			
+		LogWrite("ControlSend -  key = " . A_ThisHotkey . " window = " . "ahk_id " . WinList%A_Index%)
 		ControlSend, , % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}", % "ahk_id " WinList%A_Index%
 	}
 }
@@ -41,8 +44,6 @@ LoopSend(Focus=0)
 	ExitApp
 	return
 
-IfWinActive, % GetWindow()
-{
 $*0::
 $*1::
 $*2::
@@ -104,6 +105,12 @@ $*End::
 $*PgUp::
 $*PgDn::
 $*ESC::
-	LoopSend(0)
-	Return
-}
+	IfWinActive, % GetWindow()
+	{
+		LogWrite("Catch -  key = " . A_ThisHotkey)
+		LoopSend(0)
+		Return
+	}
+	else
+		Send % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}"
+	
