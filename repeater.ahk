@@ -53,6 +53,9 @@ RequireAdmin()
 !F1::
 	ExitApp
 	return
+!F2::
+	Send "!{F2}"
+	return
 $*F1::
 $*F2::
 $*F3::
