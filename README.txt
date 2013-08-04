@@ -9,7 +9,7 @@ Repeater is an utility to send pressed keys for all windows with specified title
 2. INSTALLATION
 ---------------
 
-You need to download AutoHotkey interpreter from official website for launching Repeater :
+You need to download AutoHotkey interpreter from official website for launching Repeater:
 http://l.autohotkey.net/AutoHotkey_L_Install.exe
 
 Then download archive with Repeater scripts and extract it:
