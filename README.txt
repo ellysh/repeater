@@ -22,7 +22,7 @@ You must specify title or class of windows that will be recieved user's keystrok
 The AU3_Spy.exe tool can be used to get this kind of information about windows. You can find this tool in AutoHotkey installation
 directory (by default `C:\Program Files\AutoHotkey`).
 
-Windows' title must be specified in repeater.ahk script from Repeater utility archive. This is example of title for Notepad application:
+Windows' title must be specified in `run\repeater.ahk` script from Repeater utility archive. This is example of title for Notepad application:
 global kTitle := "Untitled - Notepad"
 
 Alternative solution is specifying windows' class in repeater.ahk script. This is example for Notepad application:
@@ -35,7 +35,7 @@ global kUseClass := 1
 ------------
 
 There are steps to launch Repeater utility:
-1. Run the repeater.ahk script.
+1. Run the `repeater.ahk` script from the `run` directory.
 2. Allow administrator's privileges for the script.
 
 You can stop Repeater by Alt+F1 pressing.
