@@ -1,10 +1,7 @@
 #include debug.ahk
 
 global kTitle := "II"
-;global kTitle := "Untitled - Notepad"
-
-global kClass := "ahk_class Notepad"
-;global kClass := "ahk_class l2UnrealWWindowsViewportWindow"
+global kClass := "ahk_class l2UnrealWWindowsViewportWindow"
 global kUseClass := 0
 
 #NoEnv
@@ -39,6 +36,19 @@ LoopSend(Focus = 0)
 		ControlSend, , % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}", % "ahk_id " WinList%A_Index%
 	}
 }
+
+RequireAdmin()
+{
+	if not A_IsAdmin
+	{
+		DllCall("shell32\ShellExecuteA", uint, 0, str, "RunAs", str, A_AhkPath
+				, str, """" . A_ScriptFullPath . """", str, A_WorkingDir, int, 1)
+		ExitApp
+	}
+}
+
+
+RequireAdmin()
 
 !F1::
 	ExitApp
