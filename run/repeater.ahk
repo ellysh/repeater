@@ -3,6 +3,10 @@
 global kTitle := "II"
 global kClass := "ahk_class l2UnrealWWindowsViewportWindow"
 global kUseClass := 0
+global kIsNumber := 1
+global kIsFunctionKey := 1
+global kIsLetter := 0
+global kIsSpecialKey := 0
 
 #NoEnv
 #Persistent
@@ -23,8 +27,9 @@ GetWindow()
 	}
 }
 
-LoopSend(Focus = 0)
+LoopSend(focus = 0)
 {
+	LogWrite("LoopSend -  focus = " . focus)
 	WinGet, WinList, List, % GetWindow()
 	Loop %WinList%
 	{
@@ -45,6 +50,18 @@ RequireAdmin()
 				, str, """" . A_ScriptFullPath . """", str, A_WorkingDir, int, 1)
 		ExitApp
 	}
+}
+
+Process()
+{
+	LogWrite("Process -  key = " . A_ThisHotkey)
+	IfWinActive, % GetWindow()
+	{
+		LoopSend(0)
+		Return
+	}
+	else
+		Send % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}"
 }
 
 
@@ -68,6 +85,16 @@ $*F9::
 $*F10::
 $*F11::
 $*F12::
+	if %kIsFunctionKey%
+	{
+		Process()
+	}
+	else
+	{
+		Send % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}"
+	}
+	Return
+
 $*0::
 $*1::
 $*2::
@@ -78,6 +105,16 @@ $*6::
 $*7::
 $*8::
 $*9::
+	if %kIsNumber%
+	{
+		Process()
+	}
+	else
+	{
+		Send % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}"
+	}
+	Return
+	
 $*a::
 $*b::
 $*c::
@@ -104,6 +141,16 @@ $*w::
 $*x::
 $*y::
 $*z::
+	if %kIsLetter%
+	{
+		Process()
+	}
+	else
+	{
+		Send % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}"
+	}
+	Return
+
 $*Space::
 $*Left::
 $*Right::
@@ -129,12 +176,12 @@ $*End::
 $*PgUp::
 $*PgDn::
 $*ESC::
-	LogWrite("Catch -  key = " . A_ThisHotkey)
-	IfWinActive, % GetWindow()
+	if %kIsSpecialKey%
 	{
-		LoopSend(0)
-		Return
+		Process()
 	}
 	else
+	{
 		Send % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}"
-	
+	}
+	Return
