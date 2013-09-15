@@ -1,4 +1,4 @@
-#include debug.ahk
+;#include debug.ahk
 
 global kTitle := "II"
 global kClass := "ahk_class l2UnrealWWindowsViewportWindow"
@@ -13,7 +13,7 @@ global kIsSpecialKey := 0
 #SingleInstance, Force
 
 SetKeyDelay, -1
-LogWrite("Configuration - kTitle = " . kTitle . " Class = " . kClass . " kUseClass = " . kUseClass)
+;LogWrite("Configuration - kTitle = " . kTitle . " Class = " . kClass . " kUseClass = " . kUseClass)
 
 GetWindow()
 {
@@ -29,7 +29,7 @@ GetWindow()
 
 LoopSend(focus = 0)
 {
-	LogWrite("LoopSend -  focus = " . focus)
+	;LogWrite("LoopSend -  focus = " . focus)
 	WinGet, WinList, List, % GetWindow()
 	Loop %WinList%
 	{
@@ -37,7 +37,7 @@ LoopSend(focus = 0)
 		{
 			WinActivate, % "ahk_id " . WinList%A_Index%
 		}
-		LogWrite("ControlSend -  key = " . A_ThisHotkey . " window = " . "ahk_id " . WinList%A_Index%)
+		;LogWrite("ControlSend -  key = " . A_ThisHotkey . " window = " . "ahk_id " . WinList%A_Index%)
 		ControlSend, , % "{Blind}{" RegExReplace(A_ThisHotkey, "[*$~]") "}", % "ahk_id " WinList%A_Index%
 	}
 }
@@ -54,7 +54,7 @@ RequireAdmin()
 
 Process()
 {
-	LogWrite("Process -  key = " . A_ThisHotkey)
+	;LogWrite("Process -  key = " . A_ThisHotkey)
 	IfWinActive, % GetWindow()
 	{
 		LoopSend(0)
