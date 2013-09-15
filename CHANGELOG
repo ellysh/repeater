@@ -1,3 +1,7 @@
+* Repeater 0.3
+	- Fix bug with the debug.ahk file including
+	- Disable groups of processing keys by variables
+
 * Repeater 0.2
 	- Add README files with instructions
 	- Add the LICENSE file

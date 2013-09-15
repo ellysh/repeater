@@ -1,4 +1,4 @@
-Repeater 0.2 version
+Repeater 0.3 version
 ====================
 
 1. INTRODUCTION
