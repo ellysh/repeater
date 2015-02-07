@@ -1,4 +1,4 @@
-Repeater версия 0.3
+Repeater версия 0.4
 ===================
 
 1. ВВЕДЕНИЕ
@@ -11,7 +11,7 @@ Repeater - утилита для отправки нажатых пользователем клавиш в несколько окон од
 
 Для запуска Repeater вам необходимо скачать интерпретатор языка AutoHotkey с
 официального сайта:
-http://l.autohotkey.net/AutoHotkey_L_Install.exe
+http://www.autohotkey.com
 
 Скачайте архив со скриптами Repeater и распакуйте его:
 https://github.com/ellysh/repeater/archive/master.zip
@@ -24,13 +24,13 @@ https://github.com/ellysh/repeater/archive/master.zip
 По-умолчанию AU3_Spy.exe будет установлен в каталог `C:\Program Files\AutoHotkey`.
 
 Заголовок окон необходимо указать в скрипте `run\repeater.ahk` из архива утилиты Repeater. Пример для приложения Notepad:
-global kTitle := "Untitled - Notepad"
+kTitle := "Untitled - Notepad"
 
 Альтернативное решение - указать класс окон в скрипте repeater.ahk. Пример для приложения Notepad:
-global kClass := "ahk_class Notepad"
+kClass := "ahk_class Notepad"
 
 ВНИМАНИЕ: Чтобы использовался класс окон, а не заголовок измените значение переменной kUseClass на 1:
-global kUseClass := 1
+kUseClass := 1
 
 4. ЗАПУСК
 ---------

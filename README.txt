@@ -1,4 +1,4 @@
-Repeater 0.3 version
+Repeater 0.4 version
 ====================
 
 1. INTRODUCTION
@@ -10,7 +10,7 @@ Repeater is an utility to send pressed keys for all windows with specified title
 ---------------
 
 You need to download AutoHotkey interpreter from official website for launching Repeater:
-http://l.autohotkey.net/AutoHotkey_L_Install.exe
+http://www.autohotkey.com
 
 Then download archive with Repeater scripts and extract it:
 https://github.com/ellysh/repeater/archive/master.zip
@@ -23,13 +23,13 @@ The AU3_Spy.exe tool can be used to get this kind of information about windows. 
 directory (by default `C:\Program Files\AutoHotkey`).
 
 Windows' title must be specified in `run\repeater.ahk` script from Repeater utility archive. This is example of title for Notepad application:
-global kTitle := "Untitled - Notepad"
+kTitle := "Untitled - Notepad"
 
 Alternative solution is specifying windows' class in repeater.ahk script. This is example for Notepad application:
-global kClass := "ahk_class Notepad"
+kClass := "ahk_class Notepad"
 
 NB: Change value of kUseClass variable to 1 if you want to use windows' class instead the title:
-global kUseClass := 1
+kUseClass := 1
 
 4. LAUNCHING
 ------------
