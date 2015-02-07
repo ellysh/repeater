@@ -1,6 +1,7 @@
-global kLogFile := "debug.log"
+kLogFile = debug.log
 
 LogWrite(data)
 {
-	;FileAppend, %data%`n, %kLogFile%
+	global kLogFile
+	FileAppend, %data%`n, %kLogFile%
 }

@@ -1,22 +1,27 @@
 ;#include debug.ahk
 
-global kTitle := "II"
-global kClass := "ahk_class l2UnrealWWindowsViewportWindow"
-global kUseClass := 0
-global kIsNumber := 1
-global kIsFunctionKey := 1
-global kIsLetter := 0
-global kIsSpecialKey := 0
+kTitle := "II"
+kClass := "ahk_class l2UnrealWWindowsViewportWindow"
+kUseClass := 0
+kIsNumber := 1
+kIsFunctionKey := 1
+kIsLetter := 0
+kIsSpecialKey := 0
 
 #NoEnv
 #Persistent
 #SingleInstance, Force
 
 SetKeyDelay, -1
+SendMode Input
 ;LogWrite("Configuration - kTitle = " . kTitle . " Class = " . kClass . " kUseClass = " . kUseClass)
 
 GetWindow()
 {
+	global kUseClass
+	global kClass
+	global kTitle
+	
 	if %kUseClass%
 	{
 		return %kClass%
